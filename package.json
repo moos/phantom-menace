@@ -1,0 +1,24 @@
+{
+  "name": "phantom-menace",
+  "version": "0.1.0",
+  "description": "A phantomjs minifill to use with Headless Chrome",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "bench": "time ./bench/run.sh phantom 10 && time ./bench/run.sh chrome 10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moos/phantom-menace.git"
+  },
+  "author": "Moos",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^3.0.1"
+  },
+  "devDependencies": {
+    "phantomjs-prebuilt": "^2.1.7",
+    "qunitjs": "^1.23.0",
+    "chromate": "^0.3"
+  }
+}
