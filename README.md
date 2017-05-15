@@ -111,7 +111,7 @@ Headless Chrome is great.  And fast.  It pays to test your code in the same brow
 
 ## Benchmark
 
-A rudimentary benchmark test was run (see [bench/passing.html] for details)
+A rudimentary benchmark test was run (see [./bench/passing.html](./bench/passing.html) for details)
 consisting of 150 tests.
 
 ```shell
@@ -119,8 +119,9 @@ $ npm run bench
 ```
 
 The tests are run 10 times, i.e. 10 invocations of phantomjs (wi-fi off, see below) or Chrome headless, for a total of 1500 tests.  Here are the result:
+
 | time | PhantomJS | Chrome | improvement |
-|--|--|--|--|
+| -- | -- | -- | -- |
 | real | 0m9.555s | 0m4.440s | **2x** |
 | user | 0m6.832s | 0m2.037s | 3.3x |
 | sys  | 0m1.603s | 0m0.443s | 3.6x |
@@ -128,11 +129,12 @@ The tests are run 10 times, i.e. 10 invocations of phantomjs (wi-fi off, see bel
 If the instance of Chrome headless is reused, the improvements are even more dramatic, real time dropping to 2.87s (3.3x) and user time to 1.7s (4x).
 
 ### phantomjs/Qt wi-fi issue
-Latest version of PhantomJS (2.1) that is based on Qt is suffering [an issue](https://github.com/ariya/phantomjs/issues/14296) which results is severly degraded performance while wi-fi is turned on.  This is quite a henderance when running tests on deverloper machines.
+Latest version of PhantomJS (2.1) that is based on Qt is suffering [an issue](https://github.com/ariya/phantomjs/issues/14296) which results is severly degraded performance while wi-fi is turned on.  This is quite a henderance when running tests on developer machines.
 
 The improvements gained by Chrome headless against phantom when wi-fi is on is as follows:
+
 | time | PhantomJS | improvement with Chrome |
-|--|--|--|
+| -- | -- | -- |
 | real | 0m57.327s | **13x** |
 | user | 0m7.703s | 3.8x |
 | sys | 0m3.047s | 6.8x |
@@ -149,7 +151,7 @@ The improvements gained by Chrome headless against phantom when wi-fi is on is a
   - `system` module parameters (e.g. `system.platform`) are based on nodejs's
    and may be different than phantom's.
   
-If you find this useful, contributions are welcomed.
+Contributions are welcomed.
 
 ### License
 
