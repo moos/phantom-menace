@@ -1,6 +1,6 @@
 {
   "name": "phantom-menace",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A phantomjs minifill to use with Headless Chrome",
   "main": "index.js",
   "scripts": {

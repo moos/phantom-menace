@@ -18,40 +18,31 @@ Then replace your `require('fs')` and `require('system')` with above. Cross your
 
 No direct polyfill for phantom's [webpage](http://phantomjs.org/api/webpage/) module is provided. Instead you can use [chromate](https://github.com/moos/chromate) to load a target test page and listen for events.
 
+Existing Phantom runnner:
 ```js
-// phantom runner to replace
     page = require('webpage').create();
-
     page.onConsoleMessage = function (msg) {
         console.log(msg);
     };
-
     page.onInitialized = function () {
         page.evaluate(addLogging);
     };
-
     page.onCallback = handleResult;
-    
     page.open(url, function (status) { ...  });
 
     function handleResult(message) {
-        var result,
-            failed;
-
+        var result, failed;
         if (message) {
             if (message.name === 'QUnit.done') {
                 result = message.data;
                 failed = !result || !result.total || result.failed;
-
                 if (!result.total) {
                     console.error('No tests were executed. Are you loading tests asynchronously?');
                 }
-
                 exit(failed ? 1 : 0);
             }
         }
-    };
-
+    }
 ```
 Replace that with an equivalent _phantom-menace_ runner using [chromate](https://github.com/moos/chromate):
 ```js
@@ -120,7 +111,7 @@ $ npm run bench
 
 The tests are run 10 times, i.e. 10 invocations of phantomjs (wi-fi off, see below) or Chrome headless, for a total of 1500 tests.  Here are the result:
 
-| time | PhantomJS | Chrome | improvement |
+| time | PhantomJS | Chrome Headless | improvement |
 | -- | -- | -- | -- |
 | real | 0m9.555s | 0m4.440s | **2x** |
 | user | 0m6.832s | 0m2.037s | 3.3x |
@@ -133,7 +124,7 @@ Latest version of PhantomJS (2.1) that is based on Qt is suffering [an issue](ht
 
 The improvements gained by Chrome headless against phantom when wi-fi is on is as follows:
 
-| time | PhantomJS | improvement with Chrome |
+| time | PhantomJS | improvement with Chrome Headless |
 | -- | -- | -- |
 | real | 0m57.327s | **13x** |
 | user | 0m7.703s | 3.8x |
